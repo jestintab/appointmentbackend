@@ -1,4 +1,3 @@
-const serverless = require('serverless-http');
 const router = require('express').Router();
 let Provider = require('../models/provider.model');
 
@@ -84,5 +83,5 @@ router.route('/slotrequest/:id/').post((req, res) => {
    
     
 
+
 module.exports = router;
-module.exports.handler = serverless(router);
