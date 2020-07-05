@@ -12,4 +12,4 @@ React Native UserApp :[https://github.com/jestintab/appointmentRNApp](https://gi
 
 ### Online 
 
-Online version: [demo](https://confident-clarke-3162e3.netlify.app/dashboard)
+Online version: [demo](https://novaappointmentbackend.herokuapp.com/)
