@@ -1,12 +1,16 @@
 const router = require('express').Router();
 let Provider = require('../models/provider.model');
 
+
+//List all providers
 router.route('/').get((req,res) => {
     Provider.find()
         .then(providers => res.json(providers))
         .catch(err => res.status(400).json('Error: ' + err));
 
 });
+
+//Get all slots on one provider
 router.route('/slots/:id').get((req,res) => {
     Provider.findById(req.params.id)
         .then(data => res.json(data.slots))
@@ -14,6 +18,7 @@ router.route('/slots/:id').get((req,res) => {
 
 });
 
+//Add provider
 router.route('/add').post((req,res) => {
     const username = req.body.username;
     const provider_status = 1;
@@ -32,7 +37,7 @@ router.route('/add').post((req,res) => {
 });
 
 
-
+//Add new slot for a provider
 router.route('/slot/:id').post((req,res) => {
     Provider.findById(req.params.id)
             .then(data =>{
@@ -47,6 +52,8 @@ router.route('/slot/:id').post((req,res) => {
             })
         });
 
+
+//Slot update status  Approve or Decline       
 router.route('/slotupdate/:id/').post((req, res) => {
             Provider.findById(req.params.id)
                 .then(data => {
@@ -62,6 +69,8 @@ router.route('/slotupdate/:id/').post((req, res) => {
                         .catch(err => res.status(400).json('Error: ' + err));
                 })
             });
+
+//Request from user to book a slot            
 router.route('/slotrequest/:id/').post((req, res) => {
             Provider.findById(req.params.id)
                 .then(data => {

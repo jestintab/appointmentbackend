@@ -1,6 +1,7 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
 
+//Get all users
 router.route('/').get((req,res) => {
     User.find()
         .then(users => res.json(users))
@@ -8,6 +9,8 @@ router.route('/').get((req,res) => {
 
 });
 
+
+//Add user
 router.route('/add').post((req,res) => {
     const username = req.body.username;
     const status = 1;
